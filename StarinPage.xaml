@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TRAIN.StarinPage"
+             Title="StarinPage"
+             BackgroundColor="#0A0A0A"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <Color x:Key="PrimaryBlack">#0A0A0A</Color>
+        <Color x:Key="CardBlack">#1E1E1E</Color>
+        <Color x:Key="AccentBlue">#4A90E2</Color>
+        <Color x:Key="AccentGreen">#2E7D32</Color>
+        <Color x:Key="AccentRed">#CF6679</Color>
+        <Color x:Key="AccentYellow">#FFD700</Color>
+        <Color x:Key="TextPrimary">#FFFFFF</Color>
+        <Color x:Key="TextSecondary">#B0B0B0</Color>
+        <Color x:Key="TextTertiary">#3A3A3C</Color>
+
+        <Shadow x:Key="CardShadow"
+                Brush="#50000000"
+                Offset="0,4"
+                Radius="12"
+                Opacity="0.3"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, Auto">
+        <!-- Фон с дополнительными элементами -->
+        <Grid>
+            <Ellipse Fill="#252525"
+                     WidthRequest="500"
+                     HeightRequest="500"
+                     HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     Margin="100,-200,0,0"
+                     Opacity="0.2" />
+            <Ellipse Fill="{StaticResource AccentGreen}"
+                     WidthRequest="300"
+                     HeightRequest="300"
+                     HorizontalOptions="Start"
+                     VerticalOptions="End"
+                     Margin="0,0,50,-100"
+                     Opacity="0.1" />
+            <Ellipse Fill="{StaticResource AccentBlue}"
+                     WidthRequest="200"
+                     HeightRequest="200"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Margin="0,150,0,0"
+                     Opacity="0.05" />
+        </Grid>
+
+        <!-- Основной контент -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- Заголовок с украшением -->
+                <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,0,0,10">
+                    <Frame Grid.Column="0"
+                            BackgroundColor="#2C2C2E"
+                            Padding="12"
+                            CornerRadius="30"
+                            WidthRequest="50"
+                            HeightRequest="50"
+                           Background="Transparent">
+                        <Label Text="❮"
+                               FontSize="20"
+                               TextColor="{StaticResource White}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Margin="-4,-2,3,0"/>
+                    </Frame>
+
+                    <VerticalStackLayout Grid.Column="1" Margin="12,0,0,0" VerticalOptions="Center">
+                        <Label Text="ЗАВЕРШЕННЫЕ ТРЕНИРОВКИ"
+                               TextColor="{StaticResource TextSecondary}"
+                               FontSize="11"
+                               CharacterSpacing="1"
+                               Margin="-42,50,0,0"/>
+                       
+                    </VerticalStackLayout>
+
+                   
+                </Grid>
+
+                <!-- Список тренировок -->
+                <CollectionView ItemsSource="{Binding Trenings}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeThickness="0.5"
+                                    Stroke="{StaticResource TextTertiary}"
+                                    StrokeShape="RoundRectangle 20"
+                                    BackgroundColor="{StaticResource CardBlack}"
+                                    Padding="16"
+                                    Margin="0,8"
+                                    Shadow="{StaticResource CardShadow}">
+
+                                <VerticalStackLayout Spacing="14">
+
+                                    <!-- Дата и время в красивых чипсах -->
+                                    <Grid ColumnDefinitions="Auto,*,Auto">
+                                        <Border Grid.Column="0"
+                                                BackgroundColor="#2C2C2E"
+                                                Padding="10,5"
+                                                StrokeShape="RoundRectangle 8">
+                                            <HorizontalStackLayout Spacing="6">
+                                                <Label Text="📅"
+                                                       FontSize="12"
+                                                       TextColor="{StaticResource TextSecondary}"/>
+                                                <Label Text="{Binding Data, StringFormat='{0:dd MMM yyyy}'}"
+                                                       TextColor="{StaticResource TextPrimary}"
+                                                       FontSize="13"
+                                                       FontAttributes="Bold"/>
+                                            </HorizontalStackLayout>
+                                        </Border>
+
+                                        <Border Grid.Column="2"
+                                                BackgroundColor="#2C2C2E"
+                                                Padding="10,5"
+                                                StrokeShape="RoundRectangle 8">
+                                            <HorizontalStackLayout Spacing="6">
+                                                <Label Text="⏰"
+                                                       FontSize="12"
+                                                       TextColor="{StaticResource AccentBlue}"/>
+                                                <Label Text="{Binding Time, StringFormat='{0:HH:mm}'}"
+                                                       TextColor="{StaticResource AccentBlue}"
+                                                       FontSize="13"
+                                                       FontAttributes="Bold"/>
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                    </Grid>
+
+                                    <!-- Разделитель с иконкой -->
+                                    <HorizontalStackLayout Spacing="8" Margin="0,4,0,0">
+                                        <BoxView Color="{StaticResource AccentGreen}"
+                                                 WidthRequest="4"
+                                                 HeightRequest="20"
+                                                 CornerRadius="2"/>
+                                        <Label Text="ЦЕЛИ ТРЕНИРОВКИ"
+                                               TextColor="{StaticResource TextSecondary}"
+                                               FontSize="12"
+                                               FontAttributes="Bold"
+                                               CharacterSpacing="0.5"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+
+                                    <!-- Цели с улучшенными чекбоксами -->
+                                    <CollectionView ItemsSource="{Binding Goals}">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BackgroundColor="#2C2C2E"
+                                                        StrokeShape="RoundRectangle 8"
+                                                        Padding="10"
+                                                        Margin="0,3">
+                                                    <HorizontalStackLayout Spacing="12">
+                                                        <CheckBox IsEnabled="False" 
+                                                                  IsChecked="{Binding IsChecked}" 
+                                                                  Color="{StaticResource AccentGreen}" 
+                                                                  WidthRequest="20" 
+                                                                  HeightRequest="20"/>
+                                                        <Label Text="{Binding Text}" 
+                                                               TextColor="{StaticResource TextPrimary}" 
+                                                               FontSize="14" 
+                                                               VerticalOptions="Center"/>
+                                                    </HorizontalStackLayout>
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+
+                                    <!-- Кнопка удаления -->
+                                    <Border BackgroundColor="{StaticResource AccentRed}"
+                                            Opacity="0.9"
+                                            StrokeShape="RoundRectangle 12"
+                                            Margin="0,8,0,0">
+                                        <Button Text="УДАЛИТЬ"
+                                                BackgroundColor="Transparent"
+                                                TextColor="White"
+                                                FontSize="15"
+                                                FontAttributes="Bold"
+                                                CornerRadius="12"
+                                                HeightRequest="44"
+                                                Command="{Binding BindingContext.CompleteTrainingCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                CommandParameter="{Binding .}"/>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Пустое состояние (если нет тренировок) -->
+              
+                <!-- Отступ перед нижней панелью -->
+                <BoxView HeightRequest="10" Color="Transparent"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Нижняя панель навигации (как в том файле) -->
+        <Border Grid.Row="1"
+                BackgroundColor="{StaticResource CardBlack}"
+                StrokeThickness="0.5"
+                Stroke="{StaticResource TextTertiary}"
+                StrokeShape="RoundRectangle 20"
+                Padding="8"
+                Margin="12,10,12,20"
+                Shadow="{StaticResource CardShadow}">
+            <Grid ColumnDefinitions="*,*,*">
+                <!-- Главная -->
+                <Border Grid.Column="0"
+                        BackgroundColor="Transparent"
+                        Padding="8,4">
+                    <Button Text="🏠"
+                            FontSize="18"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource TextSecondary}"
+                            Padding="0"
+                            HeightRequest="36"
+                          />
+                </Border>
+
+                <!-- Новая тренировка -->
+                <Border Grid.Column="1"
+                        BackgroundColor="{StaticResource AccentGreen}"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="8,4"
+                        Margin="4,0">
+                    <Button Text="➕"
+                            FontSize="20"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource PrimaryBlack}"
+                            Padding="0"
+                            HeightRequest="36"
+                            FontAttributes="Bold"
+                        />
+                </Border>
+
+                <!-- Завершенные тренировки -->
+                <Border Grid.Column="2"
+                        BackgroundColor="Transparent"
+                        Padding="8,4">
+                    <Button Text="✓"
+                            FontSize="18"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource TextSecondary}"
+                            Padding="0"
+                            HeightRequest="36"
+                            FontAttributes="Bold"
+                          />
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

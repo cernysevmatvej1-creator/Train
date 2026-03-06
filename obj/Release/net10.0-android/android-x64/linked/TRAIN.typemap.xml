@@ -1,0 +1,8 @@
+<api type="release" assembly-name="TRAIN" mvid="9801b959952644f2b6c5a26f161f9084">
+  <module assembly-name="TRAIN" mvid="9801b959952644f2b6c5a26f161f9084" mvid-bytes="WbkBmCaV8kS2xaJvFh+QhA==">
+    <types-scratch>
+      <entry key="crc6440df504526820f23/MainActivity" java-name="crc6440df504526820f23/MainActivity" managed-type-name="TRAIN.MainActivity" token="33554447" />
+      <entry key="crc6440df504526820f23/MainApplication" java-name="crc6440df504526820f23/MainApplication" managed-type-name="TRAIN.MainApplication" token="33554448" />
+    </types-scratch>
+  </module>
+</api>

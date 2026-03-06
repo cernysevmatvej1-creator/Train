@@ -1,0 +1,4 @@
+C:\Users\Project\TRAIN\TRAIN\bin\Release\net10.0-android\publish\com.companyname.train-Signed.aab
+C:\Users\Project\TRAIN\TRAIN\bin\Release\net10.0-android\publish\com.companyname.train.aab
+C:\Users\Project\TRAIN\TRAIN\bin\Release\net10.0-android\publish\com.companyname.train-Signed.apk
+C:\Users\Project\TRAIN\TRAIN\bin\Release\net10.0-android\publish\_Microsoft.Android.Resource.Designer.dll
